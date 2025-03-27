@@ -67,8 +67,8 @@ void test_todos_los_leds_inician_apagados(void){
 void test_prender_led_individual(void) {
    uint16_t leds_virtuales = 0xFFFF; 
    
-   LedsInit(&leds_virtuales); // Passes the address of leds_virtuales to the "driver" -> port_address. So port_adress points to leds_virtuales.
-   LedsTurnOnSingle(4); // Sets *port_address = 0x0008 -> since port_address points to leds_virtuales, this updates leds_virtuales.
+   LedsInit(&leds_virtuales); // Passes the address of leds_virtuales to port_address.
+   LedsTurnOnSingle(4); // Sets *port_address = 0x0008, this updates leds_virtuales. Then in the next line we evaluate leds_virtuales value.
    TEST_ASSERT_EQUAL_HEX16(0x0008, leds_virtuales); // NOTE: Class 3 - 53:15. |  Verifies the effect of the function call by checking leds_virtuales.
 }
 
