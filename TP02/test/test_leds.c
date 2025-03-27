@@ -23,6 +23,18 @@ SPDX-License-Identifier: MIT
  ** @brief Pruebas unitarias de la biblioteca para el control de LEDs
  **/
 
+/**
+• @test Prender un LED individual.
+• @test Apagar un LED individual.
+• @test Prender y apagar múltiples LED’s.
+• @test Prender todos los LEDs de una vez.
+• @test Apagar todos los LEDs de una vez.
+• @test Consultar el estado de un LED que está encendido
+• @test Consultar el estado de un LED que est apagado
+• @test Revisar limites de los parametros.
+• @test Revisar parámetros fuera de los limites
+*/
+
 /* === Headers files inclusions =============================================================== */
 
 #include "unity.h"
@@ -43,8 +55,11 @@ SPDX-License-Identifier: MIT
 
 /* === Public function implementation ========================================================== */
 
-void test_inicial(void){
-    TEST_FAIL_MESSAGE("Arrancamos");
+//! @test Con la inicialización todos los LEDs quedan apagados.
+void test_todos_los_leds_inician_apagados(void){
+    uint16_t leds_virtuales;
+    LedsInit(&leds_virtuales);
+    TEST_ASSERT_EQUAL_HEX16(0x0000, leds_virtuales); // NOTE: Class 3 - 53:15.
 }
 
 /* === End of documentation ==================================================================== */
