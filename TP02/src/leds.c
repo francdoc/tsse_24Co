@@ -36,6 +36,7 @@ SPDX-License-Identifier: MIT
 /* === Private function declarations =========================================================== */
 
 /* === Public variable definitions ============================================================= */
+static uint16_t * port_address;
 
 /* === Private variable definitions ============================================================ */
 
@@ -43,7 +44,17 @@ SPDX-License-Identifier: MIT
 
 /* === Public function implementation ========================================================== */
 
-void LedsInit(uint16_t * leds){
+void LedsInit(uint16_t * direccion){
+    port_address = direccion;
+    *port_address = 0;
+}
+
+void LedsTurnOnSingle(uint8_t led) {
+    *port_address = 0x0008;
+}
+
+void LedsTurnOffSingle(uint8_t led) {
+    *port_address = 0x0000;
 }
 
 /* === End of documentation ==================================================================== */

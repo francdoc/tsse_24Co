@@ -52,9 +52,23 @@ extern "C"
  * 
  * @note Esta función debe ser llamada antes de utilizar cualquier otra función de la biblioteca
  * 
- * @param leds Puntero al puerto GPIO que controla los leds
+ * @param direccion Puntero al puerto GPIO que controla los leds
  */
-  void LedsInit(uint16_t *leds);
+  void LedsInit(uint16_t *direccion);
+
+/**
+ * @brief Funcion para prender un led individual
+ * 
+ * @param led Número de led que se desea prender (1 a 16)
+ */
+  void LedsTurnOnSingle(uint8_t led);
+
+/**
+ * @brief Funcion para apagar un led individual
+ * 
+ * @param led Número de led que se desea apagar (1 a 16)
+ */
+void LedsTurnOffSingle(uint8_t led);
 
   /* === End of documentation ================================================================== */
 

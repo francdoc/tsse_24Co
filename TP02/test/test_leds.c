@@ -24,7 +24,6 @@ SPDX-License-Identifier: MIT
  **/
 
 /**
-• @test Prender un LED individual.
 • @test Apagar un LED individual.
 • @test Prender y apagar múltiples LED’s.
 • @test Prender todos los LEDs de una vez.
@@ -58,9 +57,30 @@ SPDX-License-Identifier: MIT
 
 //! @test Con la inicialización todos los LEDs quedan apagados.
 void test_todos_los_leds_inician_apagados(void){
-    uint16_t leds_virtuales;
+    uint16_t leds_virtuales = 0xFFFF;
+    
     LedsInit(&leds_virtuales);
     TEST_ASSERT_EQUAL_HEX16(0x0000, leds_virtuales); // NOTE: Class 3 - 53:15.
+}
+
+//! @test Prender un LED individual.
+void test_prender_led_individual(void) {
+   uint16_t leds_virtuales = 0xFFFF;
+   
+   LedsInit(&leds_virtuales);
+   LedsTurnOnSingle(4);
+   // TEST_ASSERT_BIT_HIGH(3, leds_virtuales); // NOTE: este test es menos estricto que TEST_ASSERT_EQUAL_HEX16.
+   TEST_ASSERT_EQUAL_HEX16(0x0008, leds_virtuales); // NOTE: Class 3 - 53:15.
+}
+
+//! @test Apagar un LED individual.
+void test_apagar_led_individual(void) {
+    uint16_t leds_virtuales = 0xFFFF;
+
+    LedsInit(&leds_virtuales);
+    LedsTurnOnSingle(4);
+    LedsTurnOffSingle(4);
+    TEST_ASSERT_EQUAL_HEX16(0x000, leds_virtuales);
 }
 
 /* === End of documentation ==================================================================== */
