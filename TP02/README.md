@@ -18,6 +18,13 @@ sudo apt install ruby
 sudo gem install ceedling
 ```
 
+Para activar ceedling primero ejectura el siguiente comando:
+```
+ceedling new TP02
+```
+
+E ingresar a esa carpeta.
+
 Para generar la documentación del proyecto se utiliza el siguiente comando:
 
 ```

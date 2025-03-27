@@ -19,13 +19,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** @file leds.c
- ** @brief Definición de la biblioteca para el control de LEDs
+/** @file test_leds.c
+ ** @brief Pruebas unitarias de la biblioteca para el control de LEDs
  **/
 
 /* === Headers files inclusions =============================================================== */
 
-#include "main.h"
+#include "unity.h"
 
 /* === Macros definitions ====================================================================== */
 
@@ -42,5 +42,9 @@ SPDX-License-Identifier: MIT
 /* === Private function implementation ========================================================= */
 
 /* === Public function implementation ========================================================== */
+
+void test_inicial(void){
+    TEST_FAIL_MESSAGE("Arrancamos");
+}
 
 /* === End of documentation ==================================================================== */
