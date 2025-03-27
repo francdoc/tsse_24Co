@@ -1,3 +1,4 @@
+
 /************************************************************************************************
 Copyright (c) 2025, Franco Chiesa Docampo <fchiesadoc@gmail.com>
 
@@ -19,31 +20,46 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** @file leds.c
- ** @brief Definición de la biblioteca para el control de LEDs
+#ifndef LEDS_H
+#define LEDS_H
+
+/** @file leds.h
+ ** @brief Declaración de la biblioteca para el control de LEDs
  **/
 
-/* === Headers files inclusions =============================================================== */
+/* === Headers files inclusions ================================================================ */
 
-#include "leds.h"
+#include <stdbool.h>
+#include <stdint.h>
 
-/* === Macros definitions ====================================================================== */
+/* === Cabecera C++ ============================================================================ */
 
-/* === Private data type declarations ========================================================== */
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
-/* === Private variable declarations =========================================================== */
+  /* === Public macros definitions ============================================================= */
 
-/* === Private function declarations =========================================================== */
+  /* === Public data type declarations ========================================================= */
 
-/* === Public variable definitions ============================================================= */
+  /* === Public variable declarations ========================================================== */
 
-/* === Private variable definitions ============================================================ */
+  /* === Public function declarations ========================================================== */
+  
+  /**
+ * @brief Función para inicializar la biblioteca de leds
+ * 
+ * @note Esta función debe ser llamada antes de utilizar cualquier otra función de la biblioteca
+ * 
+ * @param leds Puntero al puerto GPIO que controla los leds
+ */
+  void LedsInit(uint16_t *leds);
 
-/* === Private function implementation ========================================================= */
+  /* === End of documentation ================================================================== */
 
-/* === Public function implementation ========================================================== */
-
-void LedsInit(uint16_t * leds){
+#ifdef __cplusplus
 }
+#endif
 
-/* === End of documentation ==================================================================== */
+#endif /* LEDS_H */

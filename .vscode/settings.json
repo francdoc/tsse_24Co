@@ -2,6 +2,7 @@
     "files.associations": {
         "*.go": "go",
         "unity.h": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "leds.h": "c"
     }
 }

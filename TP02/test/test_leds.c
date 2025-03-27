@@ -38,6 +38,7 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions =============================================================== */
 
 #include "unity.h"
+#include "leds.h"
 
 /* === Macros definitions ====================================================================== */
 
