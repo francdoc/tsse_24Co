@@ -44,6 +44,7 @@ SPDX-License-Identifier: MIT
 /* === Private data type declarations ========================================================== */
 
 /* === Private variable declarations =========================================================== */
+static uint16_t leds_virtuales = 0xFFFF;
 
 /* === Private function declarations =========================================================== */
 
@@ -55,6 +56,10 @@ SPDX-License-Identifier: MIT
 
 /* === Public function implementation ========================================================== */
 
+void setUp(void) {
+    LedsInit(&leds_virtuales); // Passes the address of leds_virtuales to port_address.
+}
+
 //! @test Con la inicialización todos los LEDs quedan apagados.
 void test_todos_los_leds_inician_apagados(void){
     uint16_t leds_virtuales = 0xFFFF;
@@ -64,19 +69,13 @@ void test_todos_los_leds_inician_apagados(void){
 }
 
 //! @test Prender un LED individual.
-void test_prender_led_individual(void) {
-   uint16_t leds_virtuales = 0xFFFF; 
-   
-   LedsInit(&leds_virtuales); // Passes the address of leds_virtuales to port_address.
+void test_prender_led_individual(void) {   
    LedsTurnOnSingle(4); // Sets *port_address = 0x0008, this updates leds_virtuales. Then in the next line we evaluate leds_virtuales value.
    TEST_ASSERT_EQUAL_HEX16(0x0008, leds_virtuales); // NOTE: Class 3 - 53:15. |  Verifies the effect of the function call by checking leds_virtuales.
 }
 
 //! @test Apagar un LED individual.
 void test_apagar_led_individual(void) {
-    uint16_t leds_virtuales = 0xFFFF;
-
-    LedsInit(&leds_virtuales);
     LedsTurnOnSingle(4);
     LedsTurnOffSingle(4);
     TEST_ASSERT_EQUAL_HEX16(0x000, leds_virtuales);
