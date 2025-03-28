@@ -78,7 +78,18 @@ void test_prender_led_individual(void) {
 void test_apagar_led_individual(void) {
     LedsTurnOnSingle(4);
     LedsTurnOffSingle(4);
-    TEST_ASSERT_EQUAL_HEX16(0x000, leds_virtuales);
+    TEST_ASSERT_EQUAL_HEX16(0x0000, leds_virtuales);
+}
+
+//! @test Prender y apagar múltiples LED's.
+void test_prender_y_apagar_algunos_leds(void) {
+    LedsTurnOnSingle(4);
+    LedsTurnOnSingle(6);
+
+    LedsTurnOffSingle(4);
+    LedsTurnOffSingle(8);
+
+    TEST_ASSERT_EQUAL_HEX16(0x0010, leds_virtuales); // Led ON should be 5 -> 0x0010
 }
 
 /* === End of documentation ==================================================================== */
