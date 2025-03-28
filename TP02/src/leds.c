@@ -28,27 +28,54 @@ SPDX-License-Identifier: MIT
 #include "leds.h"
 
 /* === Macros definitions ====================================================================== */
+ 
+/** @brief Máscara para apagar todos los LEDs */
+#define ALL_LEDS_OFF      0x0000
+
+/**
+ * The macro LEDS_TO_BIT_OFFSET is used instead of a plain -1 to convert from a 1-based LED index
+ * (LEDs numbered from 1 to 16) to a 0-based bit position (bit 0 to 15). This practice improves
+ * code readability and self-documentation, making it clear why the subtraction is needed.
+ * Using a named constant avoids the use of "magic numbers" like -1, which can obscure intent.
+ * It also centralizes the logic, making it easier to adapt if LED numbering conventions change
+ * in the future.
+ */
+/** @brief Diferencia entre el número de led y el número de bit */
+#define LEDS_TO_BIT_OFFSET 1
+
+/** @brief Constante con el primer bit en uno para generar una máscara */
+#define FIRST_BIT         1
 
 /* === Private data type declarations ========================================================== */
 
 /* === Private variable declarations =========================================================== */
 
+/** @brief Variable privada para almacenar la direccíon del puerto de salida */
+static uint16_t * port_address;
+
 /* === Private function declarations =========================================================== */
 
+/**
+ * @brief función privada para convertir el número de un led en una máscara de bits
+ * 
+ * @param led Número de led para el que se desea generar la máscara de bits
+ * @return uint16_t Máscara de bits con 1 en la posición correspondiente al led
+ */
+static uint16_t LedToMask(uint8_t led);
+
 /* === Public variable definitions ============================================================= */
-static uint16_t * port_address;
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
-static uint16_t LedToMask(uint8_t led) {
-    return (1 << (led -1)); // Mask that gives a 1 according to input
+uint16_t LedToMask(uint8_t led) {
+    return (FIRST_BIT << (led - LEDS_TO_BIT_OFFSET)); // Mask that gives a 1 according to input.
 }
 
 /* === Public function implementation ========================================================== */
 void LedsInit(uint16_t * direccion){
     port_address = direccion;
-    *port_address = 0;
+    *port_address = ALL_LEDS_OFF;
 }
 
 void LedsTurnOnSingle(uint8_t led) {
@@ -56,7 +83,7 @@ void LedsTurnOnSingle(uint8_t led) {
 }
 
 void LedsTurnOffSingle(uint8_t led) {
-    *port_address &= ~LedToMask(led); // 0b00001000 becomes 0b11110111 to gain precision shutting down specific led
+    *port_address &= ~LedToMask(led); // 0b00001000 becomes 0b11110111 to gain precision shutting down specific led.
 }
 
 /* === End of documentation ==================================================================== */

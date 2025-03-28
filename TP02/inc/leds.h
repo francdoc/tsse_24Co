@@ -70,8 +70,6 @@ extern "C"
  */
 void LedsTurnOffSingle(uint8_t led);
 
-static uint16_t LedToMask(uint8_t led);
-
   /* === End of documentation ================================================================== */
 
 #ifdef __cplusplus

@@ -44,6 +44,7 @@ SPDX-License-Identifier: MIT
 /* === Private data type declarations ========================================================== */
 
 /* === Private variable declarations =========================================================== */
+
 static uint16_t leds_virtuales = 0xFFFF;
 
 /* === Private function declarations =========================================================== */
