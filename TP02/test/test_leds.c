@@ -24,14 +24,12 @@ SPDX-License-Identifier: MIT
  **/
 
 /**
-• @test Apagar un LED individual.
-• @test Prender y apagar múltiples LED’s.
 • @test Prender todos los LEDs de una vez.
 • @test Apagar todos los LEDs de una vez.
-• @test Consultar el estado de un LED que está encendido
-• @test Consultar el estado de un LED que est apagado
+• @test Consultar el estado de un LED que está encendido.
+• @test Consultar el estado de un LED que está apagado.
 • @test Revisar limites de los parametros.
-• @test Revisar parámetros fuera de los limites
+• @test Revisar parámetros fuera de los limites.
 */
 
 /* === Headers files inclusions =============================================================== */
