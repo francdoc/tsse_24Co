@@ -86,4 +86,6 @@ void LedsTurnOffSingle(uint8_t led) {
     *port_address &= ~LedToMask(led); // 0b00001000 becomes 0b11110111 to gain precision shutting down specific led.
 }
 
+// TODO: IsLedTurnedOnLeds() True | False
+
 /* === End of documentation ==================================================================== */
