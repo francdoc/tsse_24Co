@@ -41,20 +41,22 @@ static uint16_t * port_address;
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
+static uint16_t LedToMask(uint8_t led) {
+    return (1 << (led -1)); // Mask that gives a 1 according to input
+}
 
 /* === Public function implementation ========================================================== */
-
 void LedsInit(uint16_t * direccion){
     port_address = direccion;
     *port_address = 0;
 }
 
 void LedsTurnOnSingle(uint8_t led) {
-    *port_address = 0x0008;
+    *port_address |= LedToMask(led);
 }
 
 void LedsTurnOffSingle(uint8_t led) {
-    *port_address &= ~(1 << (led -1)); // 0b00001000 becomes 0b11110111 to gain precision shutting down specific led
+    *port_address &= ~LedToMask(led); // 0b00001000 becomes 0b11110111 to gain precision shutting down specific led
 }
 
 /* === End of documentation ==================================================================== */

@@ -89,7 +89,7 @@ void test_prender_y_apagar_algunos_leds(void) {
     LedsTurnOffSingle(4);
     LedsTurnOffSingle(8);
 
-    TEST_ASSERT_EQUAL_HEX16(0x0010, leds_virtuales); // Led ON should be 5 -> 0x0010, but LedsTurnOffSingle is wrong because it shuts down all leds panel
+    TEST_ASSERT_EQUAL_HEX16(0x0020, leds_virtuales); // Led ON should be 5 -> 0x0020, but LedsTurnOffSingle is wrong because it shuts down all leds panel
 }
 
 /* === End of documentation ==================================================================== */
